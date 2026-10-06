@@ -1,0 +1,4880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>NEETXP</title>
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon"
+      type="image/png"
+      href="icon.png">
+
+<meta name="theme-color"
+      content="#070b17">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #21104d 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #062d55 0%,
+            transparent 35%
+        ),
+        #070b17;
+
+    color:#e5e7eb;
+
+    min-height:100vh;
+
+    padding-bottom:20px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    width:92%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:30px 0 60px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #38bdf8
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+
+.subtitle{
+
+    color:#94a3b8;
+
+    margin-top:4px;
+
+    font-size:14px;
+}
+
+
+.top-stats{
+
+    display:flex;
+
+    gap:12px;
+}
+
+
+.mini-stat{
+
+    background:#111827;
+
+    border:1px solid #1f2937;
+
+    padding:10px 15px;
+
+    border-radius:14px;
+
+    text-align:center;
+}
+
+
+.mini-stat span{
+
+    display:block;
+
+    font-size:12px;
+
+    color:#94a3b8;
+}
+
+
+.mini-stat strong{
+
+    font-size:18px;
+}
+
+
+/* =========================
+   INSTALL BAR
+========================= */
+
+.install-bar{
+
+    display:none;
+
+    margin-bottom:18px;
+
+    padding:16px;
+
+    border:1px solid #334155;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111936,
+            #101625
+        );
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+
+.install-bar.show{
+
+    display:flex;
+}
+
+
+.install-title{
+
+    font-weight:bold;
+
+    margin-bottom:4px;
+}
+
+
+.install-info{
+
+    color:#94a3b8;
+
+    font-size:13px;
+}
+
+
+.install-btn{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:11px 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #2563eb
+        );
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+.install-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   CONNECTION STATUS
+========================= */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:7px;
+
+    font-size:12px;
+
+    color:#86efac;
+}
+
+
+.status.offline{
+
+    color:#fbbf24;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    background:
+        linear-gradient(
+            135deg,
+            #111936,
+            #111827
+        );
+
+    border:1px solid #263354;
+
+    border-radius:24px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+        0 0 35px
+        rgba(59,130,246,.08);
+}
+
+
+.hero-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+
+.level{
+
+    color:#a5b4fc;
+
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+
+.xp-text{
+
+    font-size:14px;
+
+    color:#94a3b8;
+
+    margin-bottom:8px;
+}
+
+
+.xp-bar{
+
+    width:100%;
+
+    height:13px;
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+
+.xp-fill{
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #38bdf8
+        );
+
+    border-radius:20px;
+
+    transition:.4s;
+
+    box-shadow:
+        0 0 15px
+        rgba(56,189,248,.5);
+}
+
+
+.hero-xp{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#38bdf8;
+}
+
+
+/* =========================
+   DAILY MISSION
+========================= */
+
+.mission{
+
+    background:
+        linear-gradient(
+            135deg,
+            #17133b,
+            #101a35
+        );
+
+    border:1px solid #41368c;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    margin-bottom:22px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.mission:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    right:-70px;
+
+    top:-70px;
+
+    background:#7c3aed;
+
+    opacity:.12;
+
+    border-radius:50%;
+}
+
+
+.mission-title{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+
+.mission-subtitle{
+
+    color:#94a3b8;
+
+    margin-bottom:20px;
+}
+
+
+.mission-item{
+
+    margin:14px 0;
+}
+
+
+.mission-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:7px;
+}
+
+
+.mission-row span{
+
+    color:#cbd5e1;
+}
+
+
+.mission-row strong{
+
+    color:#38bdf8;
+}
+
+
+.mission-bar{
+
+    height:9px;
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+
+.mission-fill{
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #38bdf8
+        );
+
+    border-radius:20px;
+
+    transition:.4s;
+}
+
+
+.mission-complete{
+
+    margin-top:18px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#10251e;
+
+    border:1px solid #166534;
+
+    color:#86efac;
+
+    text-align:center;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-title{
+
+    font-size:22px;
+
+    margin:25px 0 15px;
+}
+
+
+/* =========================
+   SUBJECTS
+========================= */
+
+.subject-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.subject{
+
+    background:#101625;
+
+    border:1px solid #1f2937;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    transition:.25s;
+}
+
+
+.subject:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#475569;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.25);
+}
+
+
+.subject h3{
+
+    margin-bottom:7px;
+}
+
+
+.subject p{
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+}
+
+
+.chapter{
+
+    width:100%;
+
+    padding:11px;
+
+    border:none;
+
+    border-radius:12px;
+
+    margin-top:8px;
+
+    background:#182235;
+
+    color:#e2e8f0;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    transition:.2s;
+}
+
+
+.chapter:hover{
+
+    background:#263653;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+
+    margin-top:20px;
+}
+
+
+.action{
+
+    padding:16px;
+
+    border-radius:16px;
+
+    border:1px solid #263244;
+
+    background:#101625;
+
+    color:#e2e8f0;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+
+.action:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#38bdf8;
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz{
+
+    display:none;
+
+    background:#101625;
+
+    border:1px solid #293548;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    margin-top:25px;
+}
+
+
+.quiz-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#94a3b8;
+
+    margin-bottom:18px;
+}
+
+
+.question{
+
+    font-size:21px;
+
+    line-height:1.5;
+
+    margin-bottom:18px;
+}
+
+
+.option{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:8px 0;
+
+    border-radius:13px;
+
+    border:1px solid #334155;
+
+    background:#172033;
+
+    color:#e2e8f0;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.2s;
+}
+
+
+.option:hover{
+
+    background:#22304a;
+}
+
+
+.option.correct{
+
+    background:#123524;
+
+    border-color:#22c55e;
+}
+
+
+.option.wrong{
+
+    background:#3a1717;
+
+    border-color:#ef4444;
+}
+
+
+.explanation{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    background:#172033;
+
+    border-radius:14px;
+
+    color:#cbd5e1;
+
+    line-height:1.5;
+}
+
+
+.next-btn{
+
+    margin-top:18px;
+
+    padding:13px 20px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #2563eb
+        );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+
+    display:none;
+
+    background:#101625;
+
+    border:1px solid #293548;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    text-align:center;
+
+    margin-top:25px;
+}
+
+
+.result h2{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+}
+
+
+.result-score{
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    color:#38bdf8;
+
+    margin:15px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+}
+
+
+.progress-card{
+
+    background:#101625;
+
+    border:1px solid #1f2937;
+
+    border-radius:18px;
+
+    padding:20px;
+}
+
+
+.progress-card span{
+
+    color:#94a3b8;
+
+    font-size:13px;
+}
+
+
+.progress-card strong{
+
+    display:block;
+
+    font-size:28px;
+
+    margin-top:7px;
+
+    color:#38bdf8;
+}
+
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+.achievements{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+}
+
+
+.badge{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#101625;
+
+    border:1px solid #1f2937;
+
+    text-align:center;
+
+    opacity:.35;
+
+    transition:.25s;
+}
+
+
+.badge.unlocked{
+
+    opacity:1;
+
+    border-color:#7c3aed;
+
+    box-shadow:
+        0 0 20px
+        rgba(124,58,237,.15);
+}
+
+
+.badge-icon{
+
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+
+.badge-title{
+
+    font-weight:bold;
+}
+
+
+.badge-desc{
+
+    font-size:12px;
+
+    color:#94a3b8;
+
+    margin-top:5px;
+}
+
+
+/* =========================
+   MISTAKES
+========================= */
+
+.mistakes{
+
+    background:#101625;
+
+    border:1px solid #1f2937;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-top:20px;
+}
+
+
+.mistake-item{
+
+    padding:13px;
+
+    border-bottom:
+        1px solid #1f2937;
+}
+
+
+.mistake-item:last-child{
+
+    border-bottom:none;
+}
+
+
+.mistake-question{
+
+    font-weight:bold;
+}
+
+
+.mistake-answer{
+
+    color:#86efac;
+
+    font-size:13px;
+
+    margin-top:5px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+.reset{
+
+    margin-top:30px;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    border:1px solid #7f1d1d;
+
+    background:#2a1212;
+
+    color:#fca5a5;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav{
+
+    display:none;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    body{
+
+        padding-bottom:85px;
+    }
+
+
+    .container{
+
+        width:94%;
+
+        padding:
+            18px 0 40px;
+    }
+
+
+    header{
+
+        align-items:flex-start;
+    }
+
+
+    .logo{
+
+        font-size:27px;
+    }
+
+
+    .subtitle{
+
+        font-size:12px;
+    }
+
+
+    .top-stats{
+
+        display:none;
+    }
+
+
+    .hero{
+
+        padding:20px;
+    }
+
+
+    .hero-top{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+
+    .hero-xp{
+
+        font-size:26px;
+    }
+
+
+    .mission{
+
+        padding:19px;
+    }
+
+
+    .mission-title{
+
+        font-size:19px;
+    }
+
+
+    .subject-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .actions{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .progress-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .achievements{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .quiz{
+
+        padding:19px;
+    }
+
+
+    .question{
+
+        font-size:18px;
+    }
+
+
+    .option{
+
+        padding:15px;
+
+        font-size:14px;
+    }
+
+
+    .install-bar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+
+    .install-btn{
+
+        width:100%;
+    }
+
+
+    .mobile-nav{
+
+        position:fixed;
+
+        display:flex;
+
+        bottom:10px;
+
+        left:50%;
+
+        transform:translateX(-50%);
+
+        width:94%;
+
+        max-width:500px;
+
+        z-index:1000;
+
+        background:#111827;
+
+        border:1px solid #334155;
+
+        border-radius:18px;
+
+        padding:8px;
+
+        gap:5px;
+
+        box-shadow:
+            0 10px 35px
+            rgba(0,0,0,.5);
+    }
+
+
+    .mobile-nav button{
+
+        flex:1;
+
+        border:none;
+
+        background:transparent;
+
+        color:#cbd5e1;
+
+        padding:10px 4px;
+
+        border-radius:12px;
+
+        cursor:pointer;
+
+        font-size:11px;
+    }
+
+
+    .mobile-nav button:active{
+
+        background:#1e293b;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media(max-width:380px){
+
+    .progress-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .achievements{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .mobile-nav button{
+
+        font-size:10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =========================
+     INSTALL BAR
+========================= -->
+
+<div class="install-bar" id="installBar">
+
+    <div>
+
+        <div class="install-title">
+            📱 Install NEETXP
+        </div>
+
+        <div class="install-info">
+            Get NEETXP on your device like a real app.
+        </div>
+
+        <div
+            class="status"
+            id="connectionStatus">
+
+            🟢 Online
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="install-btn"
+        onclick="installApp()">
+
+        Install NEETXP
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div>
+
+        <div class="logo">
+            NEETXP ⚡
+        </div>
+
+        <div class="subtitle">
+            Level up your NEET preparation
+        </div>
+
+    </div>
+
+
+    <div class="top-stats">
+
+        <div class="mini-stat">
+
+            <span>
+                🔥 Streak
+            </span>
+
+            <strong id="streakTop">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+            <span>
+                ⚡ XP
+            </span>
+
+            <strong id="xpTop">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<div class="hero">
+
+    <div class="hero-top">
+
+        <div
+            style="
+            flex:1;
+            width:100%;
+            ">
+
+            <div
+                class="level"
+                id="levelText">
+
+                LEVEL 1
+
+            </div>
+
+
+            <div
+                class="xp-text"
+                id="xpText">
+
+                0 / 100 XP
+
+            </div>
+
+
+            <div class="xp-bar">
+
+                <div
+                    class="xp-fill"
+                    id="xpFill">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-xp">
+
+            ⚡
+            <span id="heroXP">
+                0
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DAILY MISSION
+========================= -->
+
+<div class="mission">
+
+    <div class="mission-title">
+        🎯 TODAY'S MISSION
+    </div>
+
+
+    <div class="mission-subtitle">
+
+        Complete today's goals and earn
+        <b>+100 XP</b>.
+
+    </div>
+
+
+    <div class="mission-item">
+
+        <div class="mission-row">
+
+            <span>
+                🧠 Answer 10 questions
+            </span>
+
+            <strong>
+
+                <span id="missionQuestions">
+                    0
+                </span>/10
+
+            </strong>
+
+        </div>
+
+
+        <div class="mission-bar">
+
+            <div
+                class="mission-fill"
+                id="missionQuestionsBar">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="mission-item">
+
+        <div class="mission-row">
+
+            <span>
+                🎯 Get 5 correct
+            </span>
+
+            <strong>
+
+                <span id="missionCorrect">
+                    0
+                </span>/5
+
+            </strong>
+
+        </div>
+
+
+        <div class="mission-bar">
+
+            <div
+                class="mission-fill"
+                id="missionCorrectBar">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="mission-item">
+
+        <div class="mission-row">
+
+            <span>
+                ❌ Review 3 mistakes
+            </span>
+
+            <strong>
+
+                <span id="missionMistakes">
+                    0
+                </span>/3
+
+            </strong>
+
+        </div>
+
+
+        <div class="mission-bar">
+
+            <div
+                class="mission-fill"
+                id="missionMistakesBar">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="missionComplete"></div>
+
+</div>
+
+
+<!-- =========================
+     SUBJECTS
+========================= -->
+
+<div class="section-title">
+    📚 Choose a Subject
+</div>
+
+
+<div class="subject-grid">
+
+
+<!-- PHYSICS -->
+
+<div class="subject">
+
+    <h3>
+        ⚡ Physics
+    </h3>
+
+    <p>
+        Build your concepts and solve
+        NEET-style questions.
+    </p>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Motion in a Straight Line'
+        )">
+
+        Motion in a Straight Line
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Units and Measurements'
+        )">
+
+        Units and Measurements
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Laws of Motion'
+        )">
+
+        Laws of Motion
+
+    </button>
+
+</div>
+
+
+<!-- CHEMISTRY -->
+
+<div class="subject">
+
+    <h3>
+        🧪 Chemistry
+    </h3>
+
+    <p>
+        Strengthen your NCERT concepts.
+    </p>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Structure of Atom'
+        )">
+
+        Structure of Atom
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Classification of Elements'
+        )">
+
+        Classification of Elements
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Some Basic Concepts of Chemistry'
+        )">
+
+        Some Basic Concepts of Chemistry
+
+    </button>
+
+</div>
+
+
+<!-- BIOLOGY -->
+
+<div class="subject">
+
+    <h3>
+        🧬 Biology
+    </h3>
+
+    <p>
+        Master the NCERT lines that matter.
+    </p>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'The Living World'
+        )">
+
+        The Living World
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Biological Classification'
+        )">
+
+        Biological Classification
+
+    </button>
+
+
+    <button
+        class="chapter"
+        onclick="
+        startQuiz(
+        'Cell: The Unit of Life'
+        )">
+
+        Cell: The Unit of Life
+
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     QUICK ACTIONS
+========================= -->
+
+<div class="actions">
+
+    <button
+        class="action"
+        onclick="showProgress()">
+
+        📊 My Progress
+
+    </button>
+
+
+    <button
+        class="action"
+        onclick="showMistakes()">
+
+        ❌ Mistake Bank
+
+    </button>
+
+
+    <button
+        class="action"
+        onclick="scrollToAchievements()">
+
+        🏆 Achievements
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<div
+    class="quiz"
+    id="quiz">
+
+
+    <div class="quiz-header">
+
+        <span id="quizChapter"></span>
+
+        <span id="questionNumber"></span>
+
+    </div>
+
+
+    <div
+        class="question"
+        id="question">
+
+    </div>
+
+
+    <div id="options"></div>
+
+
+    <div
+        class="explanation"
+        id="explanation">
+
+    </div>
+
+
+    <button
+        class="next-btn"
+        id="nextBtn"
+        onclick="nextQuestion()"
+        style="display:none;">
+
+        Next Question →
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+    class="result"
+    id="result">
+
+
+    <h2>
+        🎉 Quiz Complete!
+    </h2>
+
+
+    <div class="result-score">
+
+        <span id="score"></span>
+
+    </div>
+
+
+    <p id="resultMessage"></p>
+
+
+    <button
+        class="next-btn"
+        onclick="closeQuiz()">
+
+        Back to NEETXP
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div
+    id="progressSection"
+    style="display:none;">
+
+
+    <div class="section-title">
+        📊 Your Progress
+    </div>
+
+
+    <div class="progress-grid">
+
+
+        <div class="progress-card">
+
+            <span>
+                Total XP
+            </span>
+
+            <strong id="progressXP">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <span>
+                Questions
+            </span>
+
+            <strong id="progressQuestions">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <span>
+                Accuracy
+            </span>
+
+            <strong id="progressAccuracy">
+                0%
+            </strong>
+
+        </div>
+
+
+        <div class="progress-card">
+
+            <span>
+                🔥 Streak
+            </span>
+
+            <strong id="progressStreak">
+                0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ACHIEVEMENTS
+========================= -->
+
+<div id="achievementSection">
+
+
+    <div class="section-title">
+        🏆 Achievements
+    </div>
+
+
+    <div class="achievements">
+
+
+        <div
+            class="badge"
+            id="badgeQuestions">
+
+            <div class="badge-icon">
+                🧠
+            </div>
+
+            <div class="badge-title">
+                First 10
+            </div>
+
+            <div class="badge-desc">
+                Answer 10 questions
+            </div>
+
+        </div>
+
+
+        <div
+            class="badge"
+            id="badgeAccuracy">
+
+            <div class="badge-icon">
+                🎯
+            </div>
+
+            <div class="badge-title">
+                Sharp Shooter
+            </div>
+
+            <div class="badge-desc">
+                Reach 80% accuracy
+            </div>
+
+        </div>
+
+
+        <div
+            class="badge"
+            id="badgeXP">
+
+            <div class="badge-icon">
+                ⚡
+            </div>
+
+            <div class="badge-title">
+                XP Hunter
+            </div>
+
+            <div class="badge-desc">
+                Earn 500 XP
+            </div>
+
+        </div>
+
+
+        <div
+            class="badge"
+            id="badgeStreak">
+
+            <div class="badge-icon">
+                🔥
+            </div>
+
+            <div class="badge-title">
+                On Fire
+            </div>
+
+            <div class="badge-desc">
+                Reach a 3-day streak
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MISTAKES
+========================= -->
+
+<div
+    id="mistakesSection"
+    style="display:none;">
+
+
+    <div class="section-title">
+        ❌ Mistake Bank
+    </div>
+
+
+    <div
+        class="mistakes"
+        id="mistakesList">
+
+    </div>
+
+</div>
+
+
+<button
+    class="reset"
+    onclick="resetProgress()">
+
+    Reset Progress
+
+</button>
+
+
+</div>
+
+
+<!-- =========================
+     MOBILE NAV
+========================= -->
+
+<div class="mobile-nav">
+
+    <button
+        onclick="
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })">
+
+        🏠 Home
+
+    </button>
+
+
+    <button
+        onclick="showProgress()">
+
+        📊 Progress
+
+    </button>
+
+
+    <button
+        onclick="showMistakes()">
+
+        ❌ Mistakes
+
+    </button>
+
+
+    <button
+        onclick="scrollToAchievements()">
+
+        🏆 Badges
+
+    </button>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   QUESTION BANK
+========================= */
+
+const questionBank = {
+
+
+"Motion in a Straight Line":[
+
+{
+question:"The slope of a position-time graph represents:",
+options:[
+"Velocity",
+"Acceleration",
+"Distance",
+"Speed"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"The slope of a position-time graph gives velocity."
+},
+
+{
+question:"The SI unit of velocity is:",
+options:[
+"m",
+"m/s",
+"m/s²",
+"km"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Velocity is displacement divided by time, so its SI unit is m/s."
+},
+
+{
+question:"Acceleration is defined as:",
+options:[
+"Change in displacement",
+"Change in velocity per unit time",
+"Distance per unit time",
+"Change in position"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Acceleration is the rate of change of velocity."
+},
+
+{
+question:"A body moving with constant velocity has:",
+options:[
+"Zero acceleration",
+"Increasing acceleration",
+"Constant acceleration",
+"Variable acceleration"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Constant velocity means velocity is not changing, so acceleration is zero."
+},
+
+{
+question:"The area under a velocity-time graph represents:",
+options:[
+"Acceleration",
+"Displacement",
+"Speed",
+"Force"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"The area under a velocity-time graph gives displacement."
+},
+
+{
+question:"If a body starts from rest, its initial velocity is:",
+options:[
+"1 m/s",
+"9.8 m/s",
+"0",
+"-1 m/s"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Starting from rest means initial velocity is zero."
+},
+
+{
+question:"Which quantity can be negative?",
+options:[
+"Distance",
+"Speed",
+"Displacement",
+"Mass"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Displacement has direction, so it can be positive, negative, or zero."
+},
+
+{
+question:"The slope of a velocity-time graph represents:",
+options:[
+"Velocity",
+"Acceleration",
+"Distance",
+"Displacement"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"The slope of a velocity-time graph gives acceleration."
+},
+
+{
+question:"Average velocity is equal to:",
+options:[
+"Total distance / total time",
+"Total displacement / total time",
+"Speed × time",
+"Acceleration × time"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Average velocity is total displacement divided by total time."
+},
+
+{
+question:"A body covers equal distances in equal intervals of time. Its motion is:",
+options:[
+"Uniform",
+"Non-uniform",
+"Circular",
+"Random"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Equal distances in equal time intervals indicate uniform motion."
+}
+
+],
+
+
+"Units and Measurements":[
+
+{
+question:"The SI unit of length is:",
+options:[
+"Centimetre",
+"Metre",
+"Kilometre",
+"Millimetre"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The SI base unit of length is metre."
+},
+
+{
+question:"The SI unit of mass is:",
+options:[
+"Gram",
+"Kilogram",
+"Milligram",
+"Tonne"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Kilogram is the SI base unit of mass."
+},
+
+{
+question:"How many significant figures are there in 0.00450?",
+options:[
+"2",
+"3",
+"4",
+"5"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"Leading zeros are not significant. 4, 5 and the trailing zero count."
+},
+
+{
+question:"The dimensional formula of velocity is:",
+options:[
+"[LT⁻¹]",
+"[LT⁻²]",
+"[MLT⁻¹]",
+"[MLT⁻²]"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Velocity = displacement/time = [L][T⁻¹]."
+},
+
+{
+question:"Which is a derived SI unit?",
+options:[
+"Metre",
+"Second",
+"Newton",
+"Kelvin"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Newton is derived from kg, m and s."
+},
+
+{
+question:"1 kilometre equals:",
+options:[
+"10 m",
+"100 m",
+"1000 m",
+"10000 m"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"1 km = 1000 m."
+},
+
+{
+question:"The dimensional formula of acceleration is:",
+options:[
+"[LT⁻¹]",
+"[LT⁻²]",
+"[MLT⁻¹]",
+"[M⁰L⁰T⁰]"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"Acceleration = velocity/time = [LT⁻²]."
+},
+
+{
+question:"Which quantity is dimensionless?",
+options:[
+"Velocity",
+"Force",
+"Strain",
+"Acceleration"
+],
+answer:2,
+difficulty:"Medium",
+explanation:
+"Strain is a ratio of two lengths, so it has no dimensions."
+},
+
+{
+question:"The number of significant figures in 100.0 is:",
+options:[
+"1",
+"2",
+"3",
+"4"
+],
+answer:3,
+difficulty:"Medium",
+explanation:
+"The decimal notation makes all four digits significant."
+},
+
+{
+question:"The SI unit of time is:",
+options:[
+"Minute",
+"Hour",
+"Second",
+"Day"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Second is the SI base unit of time."
+}
+
+],
+
+
+"Laws of Motion":[
+
+{
+question:"Newton's first law is also called the law of:",
+options:[
+"Acceleration",
+"Inertia",
+"Momentum",
+"Action"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Newton's first law is known as the law of inertia."
+},
+
+{
+question:"The SI unit of force is:",
+options:[
+"Joule",
+"Newton",
+"Watt",
+"Pascal"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The SI unit of force is Newton."
+},
+
+{
+question:"Newton's second law gives the relation:",
+options:[
+"F = ma",
+"F = m/a",
+"F = a/m",
+"F = mv"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"For constant mass, Newton's second law gives F = ma."
+},
+
+{
+question:"Action and reaction forces are:",
+options:[
+"Equal and opposite",
+"Equal and same direction",
+"Unequal",
+"Always zero"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Newton's third law states that forces occur in equal and opposite pairs."
+},
+
+{
+question:"Momentum is given by:",
+options:[
+"mv",
+"ma",
+"m/v",
+"v/m"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Momentum p = mass × velocity."
+},
+
+{
+question:"The SI unit of momentum is:",
+options:[
+"kg m/s",
+"N/m",
+"kg/m",
+"m/s²"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Momentum has SI unit kg m/s."
+},
+
+{
+question:"Friction generally acts:",
+options:[
+"Along motion",
+"Opposite relative motion",
+"Vertically upward",
+"Always downward"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Friction opposes relative motion between surfaces."
+},
+
+{
+question:"If net force on an object is zero, its acceleration is:",
+options:[
+"Maximum",
+"Zero",
+"Infinite",
+"Negative"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"From F = ma, zero net force means zero acceleration."
+},
+
+{
+question:"Impulse is equal to:",
+options:[
+"Change in momentum",
+"Change in mass",
+"Change in acceleration",
+"Force/time"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Impulse equals change in momentum."
+},
+
+{
+question:"A passenger moves forward when a bus suddenly stops due to:",
+options:[
+"Gravity",
+"Inertia",
+"Friction",
+"Acceleration"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The passenger's body tends to maintain its state of motion due to inertia."
+}
+
+],
+
+
+"Structure of Atom":[
+
+{
+question:"The negatively charged particle in an atom is:",
+options:[
+"Proton",
+"Electron",
+"Neutron",
+"Nucleus"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Electrons carry negative charge."
+},
+
+{
+question:"The positively charged particle is:",
+options:[
+"Electron",
+"Neutron",
+"Proton",
+"Photon"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Protons carry positive charge."
+},
+
+{
+question:"The charge of a neutron is:",
+options:[
+"Positive",
+"Negative",
+"Zero",
+"Variable"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Neutrons are electrically neutral."
+},
+
+{
+question:"Atomic number represents number of:",
+options:[
+"Neutrons",
+"Protons",
+"Nucleons",
+"Electrons + neutrons"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Atomic number equals number of protons."
+},
+
+{
+question:"Mass number equals:",
+options:[
+"Protons + electrons",
+"Protons + neutrons",
+"Electrons + neutrons",
+"Only neutrons"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Mass number = number of protons + number of neutrons."
+},
+
+{
+question:"Isotopes have the same:",
+options:[
+"Mass number",
+"Atomic number",
+"Number of neutrons",
+"Physical mass"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"Isotopes have the same atomic number but different mass numbers."
+},
+
+{
+question:"The nucleus contains:",
+options:[
+"Electrons only",
+"Protons and neutrons",
+"Neutrons only",
+"Electrons and protons"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The nucleus contains protons and neutrons."
+},
+
+{
+question:"Rutherford's experiment used:",
+options:[
+"Beta particles",
+"Alpha particles",
+"Electrons",
+"Neutrons"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Rutherford used alpha particles in the gold foil experiment."
+},
+
+{
+question:"The maximum number of electrons in the K shell is:",
+options:[
+"2",
+"8",
+"18",
+"32"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Using 2n², for n=1 the maximum is 2."
+},
+
+{
+question:"The charge of an electron is:",
+options:[
+"+1",
+"0",
+"-1",
+"+2"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"An electron has a charge of -1 elementary charge."
+}
+
+],
+
+
+"Classification of Elements":[
+
+{
+question:"The modern periodic law is based on:",
+options:[
+"Atomic mass",
+"Atomic number",
+"Mass number",
+"Density"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Modern periodic law is based on atomic number."
+},
+
+{
+question:"The modern periodic table has how many groups?",
+options:[
+"7",
+"8",
+"18",
+"32"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"The modern periodic table contains 18 groups."
+},
+
+{
+question:"The modern periodic table has how many periods?",
+options:[
+"6",
+"7",
+"8",
+"18"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"There are seven periods."
+},
+
+{
+question:"Elements in the same group generally have similar:",
+options:[
+"Atomic masses",
+"Valence electron configurations",
+"Neutron numbers",
+"Mass numbers"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"Similar valence electron configurations give similar chemical properties."
+},
+
+{
+question:"Noble gases belong to group:",
+options:[
+"1",
+"2",
+"17",
+"18"
+],
+answer:3,
+difficulty:"Easy",
+explanation:
+"Noble gases occupy group 18."
+},
+
+{
+question:"Halogens belong to group:",
+options:[
+"1",
+"2",
+"16",
+"17"
+],
+answer:3,
+difficulty:"Easy",
+explanation:
+"Halogens are group 17 elements."
+},
+
+{
+question:"Alkali metals belong to group:",
+options:[
+"1",
+"2",
+"17",
+"18"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Alkali metals are group 1 elements."
+},
+
+{
+question:"Atomic radius generally decreases across a period because:",
+options:[
+"Nuclear charge increases",
+"Shells disappear",
+"Mass decreases",
+"Neutrons disappear"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Increasing effective nuclear charge pulls electrons closer."
+},
+
+{
+question:"Electronegativity generally increases:",
+options:[
+"Down a group",
+"Across a period",
+"With atomic size",
+"With shielding"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"Electronegativity generally increases from left to right across a period."
+},
+
+{
+question:"The most electronegative element is:",
+options:[
+"Oxygen",
+"Fluorine",
+"Chlorine",
+"Nitrogen"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Fluorine is the most electronegative element."
+}
+
+],
+
+
+"Some Basic Concepts of Chemistry":[
+
+{
+question:"One mole contains:",
+options:[
+"6.022 × 10²³ particles",
+"10²³ particles",
+"6.022 × 10²² particles",
+"10²⁴ particles"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"One mole contains Avogadro's number, 6.022 × 10²³ particles."
+},
+
+{
+question:"The molar mass of water is approximately:",
+options:[
+"16 g/mol",
+"18 g/mol",
+"20 g/mol",
+"22 g/mol"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"H₂O = 2(1) + 16 = 18 g/mol."
+},
+
+{
+question:"The SI unit of amount of substance is:",
+options:[
+"Gram",
+"Mole",
+"Kilogram",
+"Litre"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Mole is the SI base unit of amount of substance."
+},
+
+{
+question:"Molarity is defined as moles of solute per:",
+options:[
+"kg solvent",
+"litre of solution",
+"gram solution",
+"mole solvent"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Molarity = moles of solute / volume of solution in litres."
+},
+
+{
+question:"The empirical formula represents:",
+options:[
+"Actual molecule",
+"Simplest whole-number ratio",
+"Atomic mass",
+"Molecular mass"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Empirical formula gives the simplest whole-number ratio of atoms."
+},
+
+{
+question:"Molecular mass of CO₂ is:",
+options:[
+"28",
+"32",
+"44",
+"48"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"12 + 2(16) = 44."
+},
+
+{
+question:"The law of conservation of mass was proposed by:",
+options:[
+"Dalton",
+"Lavoisier",
+"Avogadro",
+"Rutherford"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Lavoisier proposed the law of conservation of mass."
+},
+
+{
+question:"Avogadro number is approximately:",
+options:[
+"6.022 × 10²³",
+"9.8 × 10²³",
+"3 × 10⁸",
+"1.6 × 10⁻¹⁹"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Avogadro constant is approximately 6.022 × 10²³ mol⁻¹."
+},
+
+{
+question:"The molecular formula of glucose is:",
+options:[
+"C₆H₁₂O₆",
+"CH₂O",
+"C₁₂H₂₂O₁₁",
+"CO₂"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Glucose has molecular formula C₆H₁₂O₆."
+},
+
+{
+question:"The limiting reagent is the reactant that:",
+options:[
+"Remains after reaction",
+"Is consumed first",
+"Has greatest mass",
+"Is always a catalyst"
+],
+answer:1,
+difficulty:"Medium",
+explanation:
+"The limiting reagent is consumed completely first and limits product formation."
+}
+
+],
+
+
+"The Living World":[
+
+{
+question:"The basic unit of classification is:",
+options:[
+"Kingdom",
+"Phylum",
+"Species",
+"Genus"
+],
+answer:2,
+difficulty:"Easy",
+explanation:
+"Species is the basic unit of biological classification."
+},
+
+{
+question:"Binomial nomenclature was popularised by:",
+options:[
+"Darwin",
+"Linnaeus",
+"Mendel",
+"Aristotle"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Carolus Linnaeus popularised binomial nomenclature."
+},
+
+{
+question:"The first word in a scientific name represents:",
+options:[
+"Species",
+"Genus",
+"Family",
+"Order"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The first part of a binomial name is the genus."
+},
+
+{
+question:"The second word in a scientific name represents:",
+options:[
+"Kingdom",
+"Family",
+"Specific epithet",
+"Class"
+],
+answer:2,
+difficulty:"Medium",
+explanation:
+"The second part is the specific epithet."
+},
+
+{
+question:"A group of related genera forms a:",
+options:[
+"Species",
+"Family",
+"Kingdom",
+"Class"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Related genera are grouped into a family."
+},
+
+{
+question:"Herbarium is a collection of:",
+options:[
+"Living animals",
+"Preserved plant specimens",
+"Rocks",
+"Microbes only"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Herbaria contain preserved plant specimens."
+},
+
+{
+question:"Taxonomy deals with:",
+options:[
+"Classification and naming",
+"Only respiration",
+"Only genetics",
+"Only ecology"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Taxonomy involves identification, nomenclature and classification."
+},
+
+{
+question:"A taxon is:",
+options:[
+"A taxonomic group",
+"A cell",
+"A gene",
+"A tissue"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"A taxon is a group at any rank in biological classification."
+},
+
+{
+question:"The scientific name of humans is:",
+options:[
+"Homo erectus",
+"Homo sapiens",
+"Pan troglodytes",
+"Mus musculus"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Humans are Homo sapiens."
+},
+
+{
+question:"Museums preserve:",
+options:[
+"Biological specimens",
+"Only plants",
+"Only DNA",
+"Only rocks"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Biological museums preserve specimens for study."
+}
+
+],
+
+
+"Biological Classification":[
+
+{
+question:"The five-kingdom classification was proposed by:",
+options:[
+"Linnaeus",
+"Whittaker",
+"Darwin",
+"Mendel"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"R.H. Whittaker proposed the five-kingdom classification."
+},
+
+{
+question:"Monera includes:",
+options:[
+"Prokaryotes",
+"Animals",
+"Plants",
+"Fungi"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Monera consists of prokaryotic organisms."
+},
+
+{
+question:"Fungi are:",
+options:[
+"Autotrophic only",
+"Heterotrophic",
+"Prokaryotic",
+"Without cell walls"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Fungi are heterotrophic organisms that absorb nutrients."
+},
+
+{
+question:"Bacteria generally have:",
+options:[
+"Eukaryotic cells",
+"Prokaryotic cells",
+"No DNA",
+"No membrane"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Bacteria are prokaryotic organisms."
+},
+
+{
+question:"Amoeba belongs to:",
+options:[
+"Monera",
+"Protista",
+"Fungi",
+"Plantae"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Amoeba is a protist."
+},
+
+{
+question:"Viruses are generally considered:",
+options:[
+"Cellular organisms",
+"Acellular",
+"Plants",
+"Animals"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Viruses are acellular entities."
+},
+
+{
+question:"Lichens are associations between:",
+options:[
+"Algae and fungi",
+"Bacteria and fungi",
+"Plants and animals",
+"Viruses and bacteria"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Lichens represent a mutualistic association of algae/cyanobacteria and fungi."
+},
+
+{
+question:"Slime moulds belong to:",
+options:[
+"Protista",
+"Monera",
+"Animalia",
+"Plantae"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Slime moulds are classified under Protista."
+},
+
+{
+question:"Kingdom Plantae consists mainly of:",
+options:[
+"Multicellular autotrophs",
+"Unicellular bacteria",
+"Heterotrophic animals",
+"Viruses"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Plants are mainly multicellular photosynthetic autotrophs."
+},
+
+{
+question:"Animals are generally:",
+options:[
+"Multicellular heterotrophs",
+"Unicellular autotrophs",
+"Prokaryotic",
+"Photosynthetic"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Animals are multicellular heterotrophic eukaryotes."
+}
+
+],
+
+
+"Cell: The Unit of Life":[
+
+{
+question:"The cell was first observed by:",
+options:[
+"Robert Hooke",
+"Schleiden",
+"Schwann",
+"Virchow"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Robert Hooke observed cells in cork."
+},
+
+{
+question:"The powerhouse of the cell is:",
+options:[
+"Nucleus",
+"Mitochondria",
+"Ribosome",
+"Golgi body"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"Mitochondria produce ATP through cellular respiration."
+},
+
+{
+question:"Protein synthesis occurs at:",
+options:[
+"Ribosomes",
+"Lysosomes",
+"Golgi bodies",
+"Vacuoles"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Ribosomes are the sites of protein synthesis."
+},
+
+{
+question:"The plasma membrane is mainly:",
+options:[
+"Cellulose",
+"Lipid and protein",
+"DNA",
+"Starch"
+],
+answer:1,
+difficulty:"Easy",
+explanation:
+"The plasma membrane is primarily composed of lipids and proteins."
+},
+
+{
+question:"Plant cells contain:",
+options:[
+"Cell wall",
+"Centrioles only",
+"No vacuole",
+"No nucleus"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Plant cells have a cell wall outside the plasma membrane."
+},
+
+{
+question:"The nucleus contains:",
+options:[
+"Genetic material",
+"Only ATP",
+"Cellulose",
+"Chlorophyll only"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"The nucleus contains chromosomes and genetic material."
+},
+
+{
+question:"Lysosomes contain:",
+options:[
+"Digestive enzymes",
+"Chlorophyll",
+"DNA only",
+"Cellulose"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Lysosomes contain hydrolytic enzymes for intracellular digestion."
+},
+
+{
+question:"Chloroplasts are responsible mainly for:",
+options:[
+"Photosynthesis",
+"Respiration",
+"Protein digestion",
+"Cell division"
+],
+answer:0,
+difficulty:"Easy",
+explanation:
+"Chloroplasts carry out photosynthesis in plant cells."
+},
+
+{
+question:"The Golgi apparatus is involved in:",
+options:[
+"Packaging and secretion",
+"DNA replication only",
+"Photosynthesis only",
+"Movement only"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"The Golgi apparatus modifies, sorts and packages cell products."
+},
+
+{
+question:"Ribosomes are made mainly of:",
+options:[
+"RNA and proteins",
+"DNA only",
+"Lipids only",
+"Cellulose"
+],
+answer:0,
+difficulty:"Medium",
+explanation:
+"Ribosomes consist of ribosomal RNA and proteins."
+}
+
+]
+
+};
+
+
+/* =========================
+   STORAGE
+========================= */
+
+let xp =
+    Number(
+        localStorage.getItem(
+            "neetxp_xp"
+        )
+    ) || 0;
+
+
+let streak =
+    Number(
+        localStorage.getItem(
+            "neetxp_streak"
+        )
+    ) || 0;
+
+
+let completed =
+    JSON.parse(
+        localStorage.getItem(
+            "neetxp_completed"
+        ) || "[]"
+    );
+
+
+let mistakes =
+    JSON.parse(
+        localStorage.getItem(
+            "neetxp_mistakes"
+        ) || "[]"
+    );
+
+
+let stats =
+    JSON.parse(
+        localStorage.getItem(
+            "neetxp_stats"
+        ) ||
+        '{"attempted":0,"correct":0,"chapters":{}}'
+    );
+
+
+let lastStudyDate =
+    localStorage.getItem(
+        "neetxp_lastStudyDate"
+    ) || "";
+
+
+/* =========================
+   DAILY MISSION
+========================= */
+
+function getLocalDate(){
+
+    const d = new Date();
+
+    return d.getFullYear()
+        + "-"
+        + String(
+            d.getMonth()+1
+        ).padStart(2,"0")
+        + "-"
+        + String(
+            d.getDate()
+        ).padStart(2,"0");
+}
+
+
+let today =
+    getLocalDate();
+
+
+let mission =
+    JSON.parse(
+        localStorage.getItem(
+            "neetxp_dailyMission"
+        ) || "null"
+    );
+
+
+if(
+    !mission ||
+    mission.date !== today
+){
+
+    mission = {
+
+        date:today,
+
+        questions:0,
+
+        correct:0,
+
+        mistakesReviewed:0,
+
+        rewarded:false
+
+    };
+
+
+    localStorage.setItem(
+
+        "neetxp_dailyMission",
+
+        JSON.stringify(mission)
+
+    );
+
+}
+
+
+/* =========================
+   QUIZ VARIABLES
+========================= */
+
+let currentChapter = "";
+
+let currentQuestions = [];
+
+let currentIndex = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================
+   SAVE ALL
+========================= */
+
+function saveAll(){
+
+    localStorage.setItem(
+        "neetxp_xp",
+        xp
+    );
+
+
+    localStorage.setItem(
+        "neetxp_streak",
+        streak
+    );
+
+
+    localStorage.setItem(
+        "neetxp_completed",
+        JSON.stringify(
+            completed
+        )
+    );
+
+
+    localStorage.setItem(
+        "neetxp_mistakes",
+        JSON.stringify(
+            mistakes
+        )
+    );
+
+
+    localStorage.setItem(
+        "neetxp_stats",
+        JSON.stringify(
+            stats
+        )
+    );
+
+
+    localStorage.setItem(
+        "neetxp_dailyMission",
+        JSON.stringify(
+            mission
+        )
+    );
+
+}
+
+
+/* =========================
+   UI UPDATE
+========================= */
+
+function updateUI(){
+
+    const level =
+        Math.floor(
+            xp / 100
+        ) + 1;
+
+
+    const levelXP =
+        xp % 100;
+
+
+    document.getElementById(
+        "levelText"
+    ).textContent =
+        "LEVEL " + level;
+
+
+    document.getElementById(
+        "xpText"
+    ).textContent =
+        levelXP + " / 100 XP";
+
+
+    document.getElementById(
+        "xpFill"
+    ).style.width =
+        levelXP + "%";
+
+
+    document.getElementById(
+        "heroXP"
+    ).textContent =
+        xp;
+
+
+    document.getElementById(
+        "xpTop"
+    ).textContent =
+        xp;
+
+
+    document.getElementById(
+        "streakTop"
+    ).textContent =
+        streak;
+
+
+    document.getElementById(
+        "progressXP"
+    ).textContent =
+        xp;
+
+
+    document.getElementById(
+        "progressQuestions"
+    ).textContent =
+        stats.attempted;
+
+
+    const accuracy =
+        stats.attempted === 0
+        ? 0
+        : Math.round(
+            (
+                stats.correct /
+                stats.attempted
+            ) * 100
+        );
+
+
+    document.getElementById(
+        "progressAccuracy"
+    ).textContent =
+        accuracy + "%";
+
+
+    document.getElementById(
+        "progressStreak"
+    ).textContent =
+        streak;
+
+
+    updateMission();
+
+    updateAchievements();
+
+}
+
+
+/* =========================
+   DAILY MISSION
+========================= */
+
+function updateMission(){
+
+    const q =
+        Math.min(
+            mission.questions,
+            10
+        );
+
+
+    const c =
+        Math.min(
+            mission.correct,
+            5
+        );
+
+
+    const m =
+        Math.min(
+            mission.mistakesReviewed,
+            3
+        );
+
+
+    document.getElementById(
+        "missionQuestions"
+    ).textContent =
+        q;
+
+
+    document.getElementById(
+        "missionCorrect"
+    ).textContent =
+        c;
+
+
+    document.getElementById(
+        "missionMistakes"
+    ).textContent =
+        m;
+
+
+    document.getElementById(
+        "missionQuestionsBar"
+    ).style.width =
+        (
+            q / 10 * 100
+        ) + "%";
+
+
+    document.getElementById(
+        "missionCorrectBar"
+    ).style.width =
+        (
+            c / 5 * 100
+        ) + "%";
+
+
+    document.getElementById(
+        "missionMistakesBar"
+    ).style.width =
+        (
+            m / 3 * 100
+        ) + "%";
+
+
+    const complete =
+        q >= 10 &&
+        c >= 5 &&
+        m >= 3;
+
+
+    if(
+        complete &&
+        !mission.rewarded
+    ){
+
+        xp += 100;
+
+        mission.rewarded = true;
+
+        saveAll();
+
+        alert(
+            "🎉 DAILY MISSION COMPLETE!\n\n" +
+            "+100 XP ⚡"
+        );
+
+    }
+
+
+    if(
+        mission.rewarded
+    ){
+
+        document.getElementById(
+            "missionComplete"
+        ).innerHTML =
+
+            `<div class="mission-complete">
+                ✅ Mission Complete! +100 XP earned today!
+            </div>`;
+
+    }
+    else{
+
+        document.getElementById(
+            "missionComplete"
+        ).innerHTML = "";
+
+    }
+
+}
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz(
+    chapter
+){
+
+    currentChapter =
+        chapter;
+
+
+    currentQuestions =
+        [...questionBank[chapter]]
+        .sort(
+            () =>
+                Math.random() - .5
+        );
+
+
+    currentIndex = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "quizChapter"
+    ).textContent =
+        chapter;
+
+
+    document.getElementById(
+        "progressSection"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "mistakesSection"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "quiz"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+
+    showQuestion();
+
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuestion(){
+
+    answered = false;
+
+
+    const q =
+        currentQuestions[
+            currentIndex
+        ];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `${currentIndex + 1} / ${currentQuestions.length}`;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    const options =
+        document.getElementById(
+            "options"
+        );
+
+
+    options.innerHTML = "";
+
+
+    q.options.forEach(
+        (
+            option,
+            index
+        ) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "option";
+
+
+            button.textContent =
+                option;
+
+
+            button.onclick =
+                () =>
+                    answerQuestion(
+                        index
+                    );
+
+
+            options.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "explanation"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =========================
+   ANSWER QUESTION
+========================= */
+
+function answerQuestion(
+    selected
+){
+
+    if(answered)
+        return;
+
+
+    answered = true;
+
+
+    const q =
+        currentQuestions[
+            currentIndex
+        ];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".option"
+        );
+
+
+    buttons.forEach(
+        (
+            button,
+            index
+        ) => {
+
+            if(
+                index === q.answer
+            ){
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+
+            if(
+                index === selected &&
+                selected !== q.answer
+            ){
+
+                button.classList.add(
+                    "wrong"
+                );
+
+            }
+
+
+            button.disabled = true;
+
+        }
+    );
+
+
+    stats.attempted++;
+
+    mission.questions++;
+
+
+    if(
+        !stats.chapters[
+            currentChapter
+        ]
+    ){
+
+        stats.chapters[
+            currentChapter
+        ] = {
+
+            attempted:0,
+
+            correct:0
+
+        };
+
+    }
+
+
+    stats.chapters[
+        currentChapter
+    ].attempted++;
+
+
+    if(
+        selected === q.answer
+    ){
+
+        score++;
+
+        stats.correct++;
+
+        stats.chapters[
+            currentChapter
+        ].correct++;
+
+        xp += 20;
+
+        mission.correct++;
+
+    }
+    else{
+
+        const exists =
+            mistakes.some(
+                m =>
+                    m.question ===
+                    q.question
+            );
+
+
+        if(!exists){
+
+            mistakes.push({
+
+                question:q.question,
+
+                answer:
+                    q.options[
+                        q.answer
+                    ],
+
+                explanation:
+                    q.explanation
+
+            });
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "explanation"
+    ).textContent =
+        "💡 " +
+        q.explanation;
+
+
+    document.getElementById(
+        "explanation"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+        "inline-block";
+
+
+    updateStreak();
+
+    saveAll();
+
+    updateUI();
+
+    checkAchievements();
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+function nextQuestion(){
+
+    currentIndex++;
+
+
+    if(
+        currentIndex >=
+        currentQuestions.length
+    ){
+
+        finishQuiz();
+
+    }
+    else{
+
+        showQuestion();
+
+    }
+
+}
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+function finishQuiz(){
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        score +
+        " / " +
+        currentQuestions.length;
+
+
+    let message = "";
+
+
+    const percentage =
+        (
+            score /
+            currentQuestions.length
+        ) * 100;
+
+
+    if(
+        percentage === 100
+    ){
+
+        message =
+            "🔥 PERFECT! You're cooking.";
+
+    }
+    else if(
+        percentage >= 80
+    ){
+
+        message =
+            "⚡ Excellent work! Keep pushing.";
+
+    }
+    else if(
+        percentage >= 60
+    ){
+
+        message =
+            "💪 Good job! Review your mistakes.";
+
+    }
+    else{
+
+        message =
+            "🧠 Don't worry. Learn from the mistakes and try again.";
+
+    }
+
+
+    document.getElementById(
+        "resultMessage"
+    ).textContent =
+        message;
+
+
+    if(
+        !completed.includes(
+            currentChapter
+        )
+    ){
+
+        completed.push(
+            currentChapter
+        );
+
+        xp += 50;
+
+    }
+
+
+    saveAll();
+
+    updateUI();
+
+
+    document.getElementById(
+        "result"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   STREAK
+========================= */
+
+function updateStreak(){
+
+    const today =
+        getLocalDate();
+
+
+    if(
+        lastStudyDate ===
+        today
+    ){
+
+        return;
+
+    }
+
+
+    if(!lastStudyDate){
+
+        streak = 1;
+
+    }
+    else{
+
+        const last =
+            new Date(
+                lastStudyDate
+            );
+
+
+        const current =
+            new Date(
+                today
+            );
+
+
+        const difference =
+            Math.round(
+                (
+                    current -
+                    last
+                ) /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
+            );
+
+
+        if(
+            difference === 1
+        ){
+
+            streak++;
+
+        }
+        else{
+
+            streak = 1;
+
+        }
+
+    }
+
+
+    lastStudyDate =
+        today;
+
+
+    localStorage.setItem(
+        "neetxp_lastStudyDate",
+        today
+    );
+
+
+    saveAll();
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function showProgress(){
+
+    document.getElementById(
+        "progressSection"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "mistakesSection"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "progressSection"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+
+    updateUI();
+
+}
+
+
+/* =========================
+   MISTAKES
+========================= */
+
+function showMistakes(){
+
+    const section =
+        document.getElementById(
+            "mistakesSection"
+        );
+
+
+    section.style.display =
+        "block";
+
+
+    document.getElementById(
+        "progressSection"
+    ).style.display =
+        "none";
+
+
+    const list =
+        document.getElementById(
+            "mistakesList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if(
+        mistakes.length === 0
+    ){
+
+        list.innerHTML =
+            `<p style="color:#94a3b8;">
+                🎉 No mistakes yet. Keep going!
+            </p>`;
+
+    }
+    else{
+
+        mistakes.forEach(
+            (
+                mistake,
+                index
+            ) => {
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                div.className =
+                    "mistake-item";
+
+
+                div.innerHTML = `
+
+                    <div class="mistake-question">
+
+                        ${index + 1}.
+                        ${mistake.question}
+
+                    </div>
+
+
+                    <div class="mistake-answer">
+
+                        Correct answer:
+                        ${mistake.answer}
+
+                    </div>
+
+
+                    <div
+                        style="
+                        color:#94a3b8;
+                        font-size:13px;
+                        margin-top:4px;">
+
+                        ${mistake.explanation}
+
+                    </div>
+
+
+                    <button
+                        onclick="
+                        reviewMistake(
+                            ${index}
+                        )"
+
+                        style="
+                        margin-top:8px;
+                        padding:7px 10px;
+                        border-radius:8px;
+                        border:1px solid #334155;
+                        background:#172033;
+                        color:#e2e8f0;
+                        cursor:pointer;">
+
+                        Review ✓
+
+                    </button>
+
+                `;
+
+
+                list.appendChild(
+                    div
+                );
+
+            }
+        );
+
+    }
+
+
+    section.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   REVIEW MISTAKE
+========================= */
+
+function reviewMistake(
+    index
+){
+
+    mission.mistakesReviewed++;
+
+
+    saveAll();
+
+    updateUI();
+
+
+    alert(
+        "✅ Mistake reviewed!"
+    );
+
+
+    showMistakes();
+
+}
+
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+function updateAchievements(){
+
+    const accuracy =
+        stats.attempted === 0
+        ? 0
+        :
+        (
+            stats.correct /
+            stats.attempted
+        ) * 100;
+
+
+    if(
+        stats.attempted >= 10
+    ){
+
+        document.getElementById(
+            "badgeQuestions"
+        ).classList.add(
+            "unlocked"
+        );
+
+    }
+
+
+    if(
+        accuracy >= 80
+    ){
+
+        document.getElementById(
+            "badgeAccuracy"
+        ).classList.add(
+            "unlocked"
+        );
+
+    }
+
+
+    if(
+        xp >= 500
+    ){
+
+        document.getElementById(
+            "badgeXP"
+        ).classList.add(
+            "unlocked"
+        );
+
+    }
+
+
+    if(
+        streak >= 3
+    ){
+
+        document.getElementById(
+            "badgeStreak"
+        ).classList.add(
+            "unlocked"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   ACHIEVEMENT CHECK
+========================= */
+
+function checkAchievements(){
+
+    updateAchievements();
+
+}
+
+
+/* =========================
+   SCROLL ACHIEVEMENTS
+========================= */
+
+function scrollToAchievements(){
+
+    document.getElementById(
+        "achievementSection"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   CLOSE QUIZ
+========================= */
+
+function closeQuiz(){
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetProgress(){
+
+    const confirmReset =
+        confirm(
+            "Are you sure you want to reset all NEETXP progress?"
+        );
+
+
+    if(!confirmReset)
+        return;
+
+
+    localStorage.removeItem(
+        "neetxp_xp"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_streak"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_completed"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_lastStudyDate"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_mistakes"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_stats"
+    );
+
+
+    localStorage.removeItem(
+        "neetxp_dailyMission"
+    );
+
+
+    location.reload();
+
+}
+
+
+/* =========================
+   PWA INSTALL
+========================= */
+
+let deferredInstallPrompt =
+    null;
+
+
+window.addEventListener(
+    "beforeinstallprompt",
+    event => {
+
+        event.preventDefault();
+
+
+        deferredInstallPrompt =
+            event;
+
+
+        document.getElementById(
+            "installBar"
+        ).classList.add(
+            "show"
+        );
+
+    }
+);
+
+
+async function installApp(){
+
+    if(
+        !deferredInstallPrompt
+    ){
+
+        alert(
+            "📱 NEETXP isn't showing the install option yet.\n\n" +
+            "Make sure you opened NEETXP through the local server."
+        );
+
+        return;
+
+    }
+
+
+    deferredInstallPrompt.prompt();
+
+
+    const result =
+        await deferredInstallPrompt
+            .userChoice;
+
+
+    console.log(
+        "Install choice:",
+        result.outcome
+    );
+
+
+    deferredInstallPrompt =
+        null;
+
+
+    document.getElementById(
+        "installBar"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+window.addEventListener(
+    "appinstalled",
+    () => {
+
+        console.log(
+            "🎉 NEETXP installed!"
+        );
+
+
+        document.getElementById(
+            "installBar"
+        ).classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
+/* =========================
+   CONNECTION STATUS
+========================= */
+
+function updateConnectionStatus(){
+
+    const status =
+        document.getElementById(
+            "connectionStatus"
+        );
+
+
+    if(!status)
+        return;
+
+
+    if(
+        navigator.onLine
+    ){
+
+        status.textContent =
+            "🟢 Online";
+
+
+        status.classList.remove(
+            "offline"
+        );
+
+    }
+    else{
+
+        status.textContent =
+            "🟡 Offline mode";
+
+
+        status.classList.add(
+            "offline"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "online",
+    updateConnectionStatus
+);
+
+
+window.addEventListener(
+    "offline",
+    updateConnectionStatus
+);
+
+
+updateConnectionStatus();
+
+
+/* =========================
+   START APP
+========================= */
+
+updateUI();
+
+
+/* =========================
+   SERVICE WORKER
+========================= */
+
+if(
+    "serviceWorker" in navigator
+){
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+
+                .then(
+                    registration => {
+
+                        console.log(
+                            "NEETXP service worker registered!"
+                        );
+
+                    }
+                )
+
+                .catch(
+                    error => {
+
+                        console.log(
+                            "Service worker registration failed:",
+                            error
+                        );
+
+                    }
+                );
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+</html>
